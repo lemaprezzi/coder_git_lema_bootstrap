@@ -660,15 +660,19 @@ box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
 }
 
 
+
+
 /* TRANSFORMACIONES */
 
 .logo:hover{
     transform: scale(1.1,1.1);
 }
-
-.opc:hover{
-    transform: scale(1.1,1.1);
+@media (min-width: 994px){
+    .opc:hover{
+        transform: scale(1.1,1.1);
+    }
 }
+
 
 .cat a:hover{
     color: black;

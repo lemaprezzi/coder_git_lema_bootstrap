@@ -1,8 +1,12 @@
+// IMPORT
+@import "mapa";
+@import "mixin";
+
+
+
 /*VARIABLES*/
 $fuente:  'Nunito', sans-serif;
-$celeste-principal: rgb(138, 247, 247);
-$verde-precio: rgb(0, 168, 28);
-$gris: rgba(255, 255, 255, 0.61);
+
 
 *{
     margin: 0;
@@ -23,7 +27,7 @@ body{
 /* NAVEGADOR */
  
 .nav__container{
-    background-color: $celeste-principal;
+     background-color: map-get($map:$colores, $key:celeste );
         .logo{
             height: 50px;
             margin-left: 15px;
@@ -31,7 +35,7 @@ body{
             }
         }
         .boton{
-            background-color: $gris;
+        background-color: map-get($map:$colores , $key:gris );
         border: 1px black solid;
         }
 }
@@ -42,8 +46,7 @@ body{
 /* CAROUSEL */
 
 .carousel__container{
-    width: 100%;
-    height: 60vh;
+    @include tamanio(100%,60vh);
     position: relative;
     .img__carousel{
         object-fit: cover;
@@ -91,7 +94,7 @@ body{
                 transform: translate(-50%, -50%);
                 color: rgb(0, 0, 0);
                 font-weight: bold;
-                background-color: rgb(240, 248, 255);
+                background-color: map-get($map:$colores, $key:gris-claro);
             }
             
             .art1__img{
@@ -194,15 +197,7 @@ margin-left: 10px;
   
 }
 
-.enviarinput{
-    display: block;
-    width: 70px;
-    margin: 5px;
-    margin-bottom: 10px;
-    padding-left: 4px;
-   border-radius: 2px;
-   border: 1px solid black;
-}
+@import "extend";
 
 .mapa{
     /* width: 500px;
@@ -249,27 +244,27 @@ box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color:rgb(210, 245, 245);
+    background-color:map-get($map:$colores , $key:celeste-claro );
     margin-bottom: 35px;
     padding: 7px;
     grid-area: categorias;
     
+    .cat{
+        position: relative;
+        padding: 5px;
+        
+        text-align: center;
+        list-style-type: none; 
+        width: 90px;
+        .cat a{
+            text-decoration: none;
+            color: map-get($map:$colores, $key:azul );
+            list-style-type: none;
+        }
+    }
 }
 
-.cat{
-    position: relative;
-    padding: 5px;
-    
-    text-align: center;
-    list-style-type: none; 
-    width: 90px;
-    
-}
-.cat a{
-    text-decoration: none;
-    color: rgb(66, 79, 255);
-    list-style-type: none;
-}
+
     /* OFERTAS */
 
 
@@ -279,93 +274,67 @@ box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
     margin: 25px 50px 50px 50px;
     position: relative;
     text-align: center;
-}
-
-.ofertas__titulo{
-    margin: auto;
-}
-
-
-.ofertas__artcontainer{
-    display: inline-block;
-    position: relative;
-    width: 200px;  
-    height: 300px;
-    border-bottom: 1px black solid;
-    margin: 5px;
-    text-decoration: none;
-    -webkit-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    -moz-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    background-color: rgb(247, 247, 247);
-
+    .ofertas__titulo{
+        margin: auto;
+    }
+    .ofertas__artcontainer{
+        display: inline-block;
+        position: relative;
+        width: 200px;  
+        height: 300px;
+        border-bottom: 1px black solid;
+        margin: 5px;
+        text-decoration: none;
+        -webkit-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        -moz-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        background-color: rgb(247, 247, 247);
     
+        .ofertas__imgcontainer{
+            display: block;
+            height: 200px;
+            border-bottom: solid 1px rgb(151, 151, 151);
+            margin: auto;
+            padding: 10px;
+
+            img{
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                
+                
+            }
+        }
+        .ofertas__infocontainer{
+            position: relative;
+            width: 100%;
+            height: 100px;
+
+            .ofertas__arttitle{
+                text-align: center;
+                margin-top: 3px;
+                font-size: 20px;
+                color: black;
+            }
+            
+            .ofertas__artprice{
+                display: block;
+                text-align: right;
+                margin-right: 10px;
+                margin-top: 17px;
+                font-size: 25px;
+                color: map-get($map:$colores , $key:verde-precio );
+            }
+        }
+    }
 }
 
-.ofertas__imgcontainer{
-    display: block;
-    height: 200px;
-    border-bottom: solid 1px rgb(151, 151, 151);
-    margin: auto;
-    padding: 10px;
-}
 
-.ofertas__imgcontainer img{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    
-    
-}
-
-.ofertas__infocontainer{
-    position: relative;
-    width: 100%;
-    height: 100px;
-}
-
-.ofertas__arttitle{
-    text-align: center;
-    margin-top: 3px;
-    font-size: 20px;
-    color: black;
-    
-    
-    
-}
-
-.ofertas__artprice{
-    display: block;
-    text-align: right;
-    margin-right: 10px;
-    margin-top: 17px;
-    font-size: 25px;
-    color: rgb(0, 168, 28);
-}
 
 .ofertas__artcontainer :hover{
     background-color: rgba(255, 255, 255, 0.185);
     z-index: 3;
-}
-
-
-.ofertas__boton{
-    position: absolute;
-    display: flex;
-    z-index: 3;
-    top: 50%;
-    right: 10%;
-    transform: translate(-0%, -25%);
-    border-radius: 100%;
-    border: none;
-    background-color: rgba(165, 165, 165, 0.404);
-}
-.ofertas__boton img{
-    width: 25px;
-    align-items: center;
-    padding: 5px;
-    margin-left: 1px;
 }
 
 
@@ -377,77 +346,77 @@ box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
     position: relative;
     text-align: center;
     position: relative;
-    
+
+    .baño__title{
+        border-bottom: black 1px solid;
+    }
+
+    .baño__artcontainer{
+        display: inline-block;
+        position: relative;
+        width: 200px;  
+        height: 300px;
+        border-bottom: 1px black solid;
+        margin: 10px;
+        text-decoration: none;
+        -webkit-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        -moz-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        background-color: rgb(247, 247, 247);
+
+        .baño__art{
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            width: 200px;  
+            height: 300px;
+
+            .baño__imgcontainer{
+                display: block;
+                height: 200px;
+                border-bottom: solid 1px rgb(151, 151, 151);
+                margin: auto;
+                padding: 10px;
+                
+                img{
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    
+                }
+            }
+            .baño__infocontainer{
+                position: relative;
+                width: 100%;
+                height: 100px;
+
+                .baño__arttitle{
+                    align-items: center;
+                    margin-top: 3px;
+                    font-size: 20px;
+                    color: black;
+                    
+                }
+                
+                .baño__artprice{
+                    display: block;
+                    text-align: right;
+                    margin-right: 10px;
+                    margin-top: 17px;
+                    font-size: 25px;
+                    color: map-get($map:$colores, $key: verde-precio );
+                }
+            }    
+        }
+
+    }
+
 }
 
-.baño__art{
-    text-decoration: none;
-}
-
-.baño__title{
-    border-bottom: black 1px solid;
-}
-
-.baño__artcontainer{
-    display: inline-block;
-    position: relative;
-    width: 200px;  
-    height: 300px;
-    border-bottom: 1px black solid;
-    margin: 10px;
-    text-decoration: none;
-    -webkit-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    -moz-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    background-color: rgb(247, 247, 247);
-}
-
-.baño__imgcontainer{
-    display: block;
-    height: 200px;
-    border-bottom: solid 1px rgb(151, 151, 151);
-    margin: auto;
-    padding: 10px;
-    
-}
-
-.baño__imgcontainer img{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    
-}
-
-.baño__infocontainer{
-    position: relative;
-    width: 100%;
-    height: 100px;
-}
-
-.baño__arttitle{
-    align-items: center;
-    margin-top: 3px;
-    font-size: 20px;
-    color: black;
-    
-}
 
 
-.baño__artprice{
-    display: block;
-    text-align: right;
-    margin-right: 10px;
-    margin-top: 17px;
-    font-size: 25px;
-    color: $verde-precio;
-}
 
-.baño__titulo{
-    margin-left: 25px;
-    margin-top: 25px;
-    padding-bottom: 50px;
-}
 
  /* PRODUCTOS 2 */
 
@@ -459,77 +428,71 @@ box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
     position: relative;
     text-align: center;
     grid-area: productos;
+
+    .estanterias__title{
+        border-bottom: black 1px solid;
+    }
+
+    .estanterias__artcontainer{
+        display: inline-block;
+        position: relative;
+        width: 200px;  
+        height: 300px;
+        border-bottom: 1px black solid;
+        margin: 10px;
+        text-decoration: none;
+        -webkit-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        -moz-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
+        background-color: rgb(247, 247, 247);
+
+        .estanterias__art{
+            text-decoration: none;
+
+            .estanterias__imgcontainer{
+                display: block;
+                height: 200px;
+                border-bottom: solid 1px rgb(151, 151, 151);
+                margin: auto;
+                padding: 10px;
+                
+                img{
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                }
+                
+            
+            }
+            .estanterias__infocontainer{
+                position: relative;
+                width: 100%;
+                height: 100px;
+
+                .estanterias__arttitle{
+                    align-items: center;
+                    margin-top: 3px;
+                    font-size: 20px;
+                    color: black;
+                    
+                }
+                
+                .estanterias__artprice{
+                    display: block;
+                    text-align: right;
+                    margin-right: 10px;
+                    margin-top: 17px;
+                    font-size: 25px;
+                    color: rgb(0, 168, 28);
+                }    
+            }
+        }
+
+    }
     
 }
 
-.estanterias__art{
-    text-decoration: none;
-}
-
-.estanterias__title{
-    border-bottom: black 1px solid;
-}
-
-.estanterias__artcontainer{
-    display: inline-block;
-    position: relative;
-    width: 200px;  
-    height: 300px;
-    border-bottom: 1px black solid;
-    margin: 10px;
-    text-decoration: none;
-    -webkit-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    -moz-box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    box-shadow: 0px 1px 2px 0px rgb(0, 0, 0);
-    background-color: rgb(247, 247, 247);
-}
-
-.estanterias__imgcontainer{
-    display: block;
-    height: 200px;
-    border-bottom: solid 1px rgb(151, 151, 151);
-    margin: auto;
-    padding: 10px;
-    
-}
-
-.estanterias__imgcontainer img{
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    
-}
-
-.estanterias__infocontainer{
-    position: relative;
-    width: 100%;
-    height: 100px;
-}
-
-.estanterias__arttitle{
-    align-items: center;
-    margin-top: 3px;
-    font-size: 20px;
-    color: black;
-    
-}
-
-
-.estanterias__artprice{
-    display: block;
-    text-align: right;
-    margin-right: 10px;
-    margin-top: 17px;
-    font-size: 25px;
-    color: rgb(0, 168, 28);
-}
-
-.estanterias__titulo{
-    margin-left: 25px;
-    margin-top: 25px;
-    padding-bottom: 50px;
-}
 
 
 /* MOVIL */

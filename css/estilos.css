@@ -139,8 +139,6 @@ body {
   margin: 5px; }
 
 .mapa {
-  /* width: 500px;
-    height: 300px; */
   -webkit-box-shadow: 0px 1px 2px 0px black;
   -moz-box-shadow: 0px 1px 2px 0px black;
   box-shadow: 0px 1px 2px 0px black; }
@@ -152,7 +150,6 @@ body {
   justify-content: space-between;
   width: 100vw; }
   .nosotros__container .nosotros__titulo {
-    margin-left: 25px;
     margin-top: 25px;
     padding-bottom: 50px;
     display: block; }
@@ -162,8 +159,6 @@ body {
     display: block;
     position: relative;
     border: black 1px solid;
-    /* width: 500px;
-        height: 300px; */
     margin: auto; }
 
 /* PRODUCTOS */
@@ -344,10 +339,39 @@ body {
           font-size: 25px;
           color: #00a81c; }
 
+/*TABLET*/
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+  #barrabuscador {
+    max-width: 320px; }
+  .mapa {
+    width: 300px;
+    height: 200px;
+    margin: 10px; }
+  .contacto__titulo {
+    text-align: center; }
+  .nosotros__titulo {
+    text-align: center;
+    margin-left: 15px; }
+  .nosotros__video {
+    width: 360px;
+    height: 300px; }
+  .ofertas__titulo {
+    text-align: center; }
+  .ofertas__container {
+    margin: 50px 75px 50px 75px;
+    text-align: center; }
+  .ofertas__boton {
+    display: none; }
+  .ofertas__artprice {
+    margin: 0 auto; } }
+
 /* MOVIL */
 @media (max-width: 479px) {
   nav {
-    height: 25vh;
     display: flex;
     justify-content: center;
     flex-direction: column; }

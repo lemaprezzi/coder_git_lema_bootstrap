@@ -15,7 +15,6 @@ body {
 .nav__container {
   background-color: #8af7f7; }
   .nav__container .logo {
-    height: 50px;
     margin-left: 15px; }
     .nav__container .logo:hover {
       transform: scale(1.1, 1.1); }
@@ -340,11 +339,17 @@ body {
           color: #00a81c; }
 
 /*TABLET*/
+@media (min-width: 769px) {
+  .logo {
+    height: 50px; } }
+
 @media (max-width: 768px) {
   nav {
     display: flex;
     justify-content: center;
     flex-direction: column; }
+  .logo {
+    height: 50px; }
   #barrabuscador {
     max-width: 320px; }
   .mapa {
@@ -375,6 +380,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column; }
+  .logo {
+    height: 35px; }
   #barrabuscador {
     max-width: 320px; }
   .mapa {
